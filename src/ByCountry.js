@@ -14,7 +14,7 @@ function ByCountry({ page, nextPage, prevPage, country }) {
     //95221ebc50cf4e13b60594d17bb22237 api key
     useEffect(() => {
 
-        fetch(`/news//top-headlines?country=${bycountry}&pageSize=5&apiKey=95221ebc50cf4e13b60594d17bb22237&page=${page}`)
+        fetch(`https://matina.vercel.app/news/top-headlines?country=${bycountry}&pageSize=5&apiKey=95221ebc50cf4e13b60594d17bb22237&page=${page}`)
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch data for that resource')
