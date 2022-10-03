@@ -12,9 +12,18 @@ function ByCountry({ page, nextPage, prevPage, country }) {
 
 
     //95221ebc50cf4e13b60594d17bb22237 api key
+
+    //('https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=us&category=business&apiKey=e316f0b03f6943de87c96dca9afde82a')
+
+    ///news//top-headlines?country=${bycountry}&pageSize=5&apiKey=95221ebc50cf4e13b60594d17bb22237&page=${page}
+
+    //'https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?
+  
+
+
     useEffect(() => {
 
-        fetch(`/news//top-headlines?country=${bycountry}&pageSize=5&apiKey=95221ebc50cf4e13b60594d17bb22237&page=${page}`)
+        fetch(`https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=bussines&apiKey=e316f0b03f6943de87c96dca9afde82a`)
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch data for that resource')

@@ -6,7 +6,7 @@ function ArticleDetails({ articles, setBlogs, isPending, setIsPending, error, se
     const { author} = useParams()
     useEffect(() => {
 
-        fetch('/news//top-headlines?country=us&apiKey=95221ebc50cf4e13b60594d17bb22237' + author)
+        fetch('https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=us&category=business&apiKey=e316f0b03f6943de87c96dca9afde82a' + author)
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch data for that resource')
