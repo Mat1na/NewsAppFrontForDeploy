@@ -12,8 +12,7 @@ import ByCountry from './ByCountry'
 
 function App() {
     const [page, setPage] = useState(1);
-    // const [country, setCountry] = useState("us")
-    const [countryName, setCountryName] = useState("the United States")
+ 
     
 
   const nextPage = () => {
@@ -47,7 +46,7 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Home nextPage={nextPage} prevPage={prevPage} page={page}  />} />
                         {/* <Route path='/create' element={<Create />} /> */}
-                        <Route path='/country/:bycountry' element={<ByCountry nextPage={nextPage} prevPage={prevPage} page={page}/>} />
+                        <Route path='/country/:bycountry/' element={<ByCountry nextPage={nextPage} prevPage={prevPage} page={page}/>} />
 
                     </Routes>
                 </div>

@@ -7,7 +7,7 @@ import Countries from '../data/countries.json'
 
 const Header = () => {
 
-
+   
 
     return (
 
@@ -18,7 +18,7 @@ const Header = () => {
                     backgroundColor: "#fc0000",
                     borderRadius: '3px',
                 }}>
-                <h2>T<small>heT<small>oday</small></small>N<small>ews</small></h2></Navbar.Brand>
+                  <h2>T<small>he</small>T<small>oday</small>N<small>ews</small></h2></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className='m-4' />
                 <div className="links">
                     {/* <Link to="/create" style={{
@@ -40,8 +40,10 @@ const Header = () => {
                                     </>
                                 ))}
                             </NavDropdown>
+                            
                         </Nav>
                     </Navbar.Collapse>
+                    
                 </div>
             </Container>
         </Navbar>
