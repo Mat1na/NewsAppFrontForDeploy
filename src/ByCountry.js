@@ -23,7 +23,7 @@ function ByCountry({ page, nextPage, prevPage, country }) {
 
     useEffect(() => {
 
-        fetch(`https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&page=${page}&category=economy&apiKey=e316f0b03f6943de87c96dca9afde82a`)
+        fetch(`https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=business&apiKey=e316f0b03f6943de87c96dca9afde82a`)
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch data for that resource')
