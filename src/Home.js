@@ -10,10 +10,10 @@ function Home() {
   return (
  
     <>
-      <div>
-        <h1 className='text-light'>Here you will find the top news from all around the World!</h1>
-        <smal  className='text-light'><em className='text-light'>Choose your country of interest and find out the top Headlines</em></smal>
-        <div className='home-list m-4'>
+      <div className='homeBack'>
+        <h1 className='text-light pt-5 mt-5 mb-5'>Here you will find the top news from all around the World!</h1>
+        <small  className='text-light'><em className='text-light'>Choose your country of interest and find out the top Headlines</em></small>
+        <div className='home-list mt-5'>
         {Countries.map((country) => (
           <>
             <Col>
@@ -28,6 +28,7 @@ function Home() {
           </>
         ))}
         </div>
+     
       </div>
     </>
   )

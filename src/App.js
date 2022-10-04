@@ -42,7 +42,7 @@ function App() {
                 <Header />
                 <div className='back'>
 
-                <div className="content">
+                <div className="content ">
                   {/* <img src={imgagebc}/> */}
                     <Routes>
                         <Route path='/' element={<Home nextPage={nextPage} prevPage={prevPage} page={page}  />} />

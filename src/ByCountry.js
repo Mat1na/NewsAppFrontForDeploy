@@ -23,7 +23,7 @@ function ByCountry({ page, nextPage, prevPage, country }) {
 
     useEffect(() => {
 
-        fetch(`https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=business&apiKey=e316f0b03f6943de87c96dca9afde82a`)
+        fetch(`https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category&pageSize=5&page=${page}&apiKey=e316f0b03f6943de87c96dca9afde82a`)
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch data for that resource')
@@ -64,7 +64,7 @@ function ByCountry({ page, nextPage, prevPage, country }) {
                 {error && <div>{error}</div>}
                 {isPending && <div>Loading...</div>}
                 {articles && <ArticleList articles={articles} nextPage={nextPage} prevPage={prevPage} page={page} bycountry={bycountry}  />}
-                {/* title={`All the Top Headlines from ${bycountry}!`} */}
+              
             </div>
             <div className="pagination  d-flex justify-content-center">
                 <ButtonGroup aria-label="" className="pb-3">
