@@ -73,12 +73,7 @@ select::-webkit-scrollbar {
   color: #fc0000;
 }
 
-.form-select{
-  color: #333;
-}
-.option :after{
-  color: #fc0000;
-}
+
 
 .dropdown-menu {
   max-height: 280px;
