@@ -48,7 +48,7 @@ function ArticleList({ articles, bycountry}) {
                           color: "white",
                           backgroundColor: "#fc0000",
                           borderRadius: "3px",
-                          width: "60%",
+                          width: "80%",
                           padding: "5px",
                         }}
                       >
