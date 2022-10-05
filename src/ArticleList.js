@@ -39,9 +39,9 @@ function ArticleList({ articles, bycountry}) {
                 <h4>{article.title} </h4>
                 <Col md={6} className="p-3 ">
                   <div className="title" key={article.title}>
-                    {article.urlToImage !== undefined &&
+                    {article.urlToImage !== undefined ||
                     article.urlToImage !== null ? (
-                      <img src={`${article.urlToImage}`} className="img-home" />
+                      <img src={`${article.urlToImage}`} className="img-home" alt={`image from ${article.source.name}`}/>
                     ) : (
                       <div
                         style={{
