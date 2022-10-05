@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArticleList from "./ArticleList";
-import { Col, Dropdown, Row, Form } from "react-bootstrap";
+import { Col, Dropdown, Row, Form, Button, ButtonGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 function ByCountry({ page, nextPage, prevPage }) {
@@ -17,11 +17,14 @@ function ByCountry({ page, nextPage, prevPage }) {
   ///news//top-headlines?country=${bycountry}&pageSize=5&apiKey=95221ebc50cf4e13b60594d17bb22237&page=${page}
 
   //'https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?
+  //https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=2&pageSize=3&apiKey=e316f0b03f6943de87c96dca9afde82a
+ // b0688766483910f75f1976a78685963d for weather
 
   useEffect(() => {
     fetch(
-      `https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&apiKey=e316f0b03f6943de87c96dca9afde82a`
+      `https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=${page}&pageSize=10&apiKey=e316f0b03f6943de87c96dca9afde82a`
     )
+    // fetch(`http://api.openweathermap.org/data/2.5/forecast?q=London,uk&id=524901&appid=b0688766483910f75f1976a78685963d`)
       .then((res) => {
         if (!res.ok) {
           throw Error("could not fetch data for that resource");
@@ -37,7 +40,7 @@ function ByCountry({ page, nextPage, prevPage }) {
         console.log(err.message);
         setError(err.message);
       });
-  }, [category, bycountry]);
+  }, [category, bycountry, page]);
 
   return (
     <>
@@ -60,6 +63,24 @@ function ByCountry({ page, nextPage, prevPage }) {
           <option value="technology">Technology</option>
         </Form.Select>
       </Form.Group>
+
+      <div>Page {page}</div>
+      <div className="pagination  d-flex justify-content-center">
+        <ButtonGroup aria-label="" className="pb-3">
+          <Button
+            variant="  btn btn-outline-light m-1 px-5 "
+            onClick={prevPage}
+          >
+            Prev
+          </Button>
+          <Button variant="outline-light  m-1 px-5" onClick={() => {
+            nextPage()
+
+          }}>
+            Next
+          </Button>
+        </ButtonGroup>
+      </div>
       <div className="home">
         {error && <div>{error}</div>}
         {isPending && <div>Loading...</div>}
@@ -74,22 +95,22 @@ function ByCountry({ page, nextPage, prevPage }) {
           />
         )}
       </div>
-      {/* <div className="pagination  d-flex justify-content-center">
-                <ButtonGroup aria-label="" className="pb-3">
-                    <Button
-                        variant="  btn btn-outline-light m-1 px-5 "
-                        onClick={prevPage}
-                    >
-                        Prev
-                    </Button>
-                    <Button variant="outline-light  m-1 px-5" onClick={() => {
-                        nextPage()
+      <div className="pagination  d-flex justify-content-center">
+        <ButtonGroup aria-label="" className="pb-3">
+          <Button
+            variant="  btn btn-outline-light m-1 px-5 "
+            onClick={prevPage}
+          >
+            Prev
+          </Button>
+          <Button variant="outline-light  m-1 px-5" onClick={() => {
+            nextPage()
 
-                    }}>
-                        Next
-                    </Button>
-                </ButtonGroup>
-            </div> */}
+          }}>
+            Next
+          </Button>
+        </ButtonGroup>
+      </div>
     </>
   );
 }
