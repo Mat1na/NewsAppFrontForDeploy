@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ArticleList from "./ArticleList";
 import Weather from "./Weather";
-import { Col, Dropdown, Row, Form, Button, ButtonGroup } from "react-bootstrap";
+import { Col, Row, Form, Button, ButtonGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Countries from './data/countries.json'
 
-function ByCountry({ page, nextPage, prevPage,countryName }) {
+
+function ByCountry({ page, nextPage, prevPage}) {
   const [articles, setArticles] = useState([]);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState([]);
-  const { bycountry } = useParams();
+  const {bycountry } = useParams();
   const [category, setCategory] = useState("");
   const [weather, setWeather]=useState([])
 
@@ -21,7 +21,7 @@ function ByCountry({ page, nextPage, prevPage,countryName }) {
 
   //'https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?
   //https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=2&pageSize=3&apiKey=e316f0b03f6943de87c96dca9afde82a
- // b0688766483910f75f1976a78685963d for weather
+
 
   useEffect(() => {
     fetch(
@@ -46,7 +46,7 @@ function ByCountry({ page, nextPage, prevPage,countryName }) {
   }, [category, bycountry, page]);
 
   useEffect(()=>{
-    fetch(`https://weatherdbi.herokuapp.com/data/weather/${countryName }`)
+    fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/182536?apikey=gL8efJZAZHWIIwQIIPmcCM086Eh4USXS&details=true&metric=true`)
     .then((res) => {
       if (!res.ok) {
         throw Error("could not fetch weather data");
@@ -56,14 +56,14 @@ function ByCountry({ page, nextPage, prevPage,countryName }) {
 
     .then((data) => {
       setWeather(data);
-      console.log(weather);
+     
       setIsPending(false);
     })
     .catch((err) => {
       console.log(err.message);
       setError(err.message);
     });
-  },[bycountry])
+  },[bycountry,page])
 
   return (
     <>
@@ -123,7 +123,7 @@ function ByCountry({ page, nextPage, prevPage,countryName }) {
       </div>
           </Col>
           <Col md={4}>
-          <Weather />
+          <Weather weather={weather} />
           </Col>
           </Row>
       <div className="pagination  d-flex justify-content-center">

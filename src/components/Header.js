@@ -6,7 +6,7 @@ import Countries from '../data/countries.json'
 
 
 const Header = () => {
-const [countryName, setCountryName]= useState("")
+
    
 
     return (
@@ -35,7 +35,7 @@ const [countryName, setCountryName]= useState("")
                                             key={country.code}
                                             className="dropdown-item text-decoration-none"
                                             value={country.code}
-                                            onClick={()=>setCountryName(country.name)}  >
+                                           >
                                             {country.name}
                                         </Link>
                                     </>
