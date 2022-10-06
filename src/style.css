@@ -201,3 +201,6 @@ select::-webkit-scrollbar {
 .home-countries-list:hover {
   color: #fc0000 !important;
 }
+.weather{
+  background-color: #ffffff;
+}

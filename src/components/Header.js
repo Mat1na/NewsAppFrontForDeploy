@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import Countries from '../data/countries.json'
@@ -6,7 +6,7 @@ import Countries from '../data/countries.json'
 
 
 const Header = () => {
-
+const [countryName, setCountryName]= useState("")
    
 
     return (
@@ -34,7 +34,8 @@ const Header = () => {
                                         <Link to={`country/${country.code}`}
                                             key={country.code}
                                             className="dropdown-item text-decoration-none"
-                                            value={country.code}  >
+                                            value={country.code}
+                                            onClick={()=>setCountryName(country.name)}  >
                                             {country.name}
                                         </Link>
                                     </>

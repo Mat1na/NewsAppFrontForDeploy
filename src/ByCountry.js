@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ArticleList from "./ArticleList";
+import Weather from "./Weather";
 import { Col, Dropdown, Row, Form, Button, ButtonGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Countries from './data/countries.json'
 
-function ByCountry({ page, nextPage, prevPage }) {
+function ByCountry({ page, nextPage, prevPage,countryName }) {
   const [articles, setArticles] = useState([]);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState([]);
@@ -44,16 +46,16 @@ function ByCountry({ page, nextPage, prevPage }) {
   }, [category, bycountry, page]);
 
   useEffect(()=>{
-    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/us?unitGroup=metric&include=events%2Cdays%2Chours%2Calerts%2Ccurrent&key=LTVNU2E8PX2AMD5VP96NBP8AQ&contentType=json`)
+    fetch(`https://weatherdbi.herokuapp.com/data/weather/${countryName }`)
     .then((res) => {
       if (!res.ok) {
-        throw Error("could not fetch data for that resource");
+        throw Error("could not fetch weather data");
       }
       return res.json();
     })
 
     .then((data) => {
-      setWeather(data.stations);
+      setWeather(data);
       console.log(weather);
       setIsPending(false);
     })
@@ -102,20 +104,28 @@ function ByCountry({ page, nextPage, prevPage }) {
           </Button>
         </ButtonGroup>
       </div>
+
+      <Row>
+        <Col md={8}>
       <div className="home">
         {error && <div>{error}</div>}
         {isPending && <div>Loading...</div>}
         {articles && (
           <ArticleList
-            articles={articles}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            setCategory={setCategory}
-            category={category}
-            bycountry={bycountry}
+          articles={articles}
+          nextPage={nextPage}
+          prevPage={prevPage}
+          setCategory={setCategory}
+          category={category}
+          bycountry={bycountry}
           />
-        )}
+          )}
       </div>
+          </Col>
+          <Col md={4}>
+          <Weather />
+          </Col>
+          </Row>
       <div className="pagination  d-flex justify-content-center">
         <ButtonGroup aria-label="" className="pb-3">
           <Button
