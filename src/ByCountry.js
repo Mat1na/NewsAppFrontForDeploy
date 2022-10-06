@@ -9,6 +9,7 @@ function ByCountry({ page, nextPage, prevPage }) {
   const [error, setError] = useState([]);
   const { bycountry } = useParams();
   const [category, setCategory] = useState("");
+  const [weather, setWeather]=useState([])
 
   //95221ebc50cf4e13b60594d17bb22237 api key
 
@@ -41,6 +42,26 @@ function ByCountry({ page, nextPage, prevPage }) {
         setError(err.message);
       });
   }, [category, bycountry, page]);
+
+  useEffect(()=>{
+    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/us?unitGroup=metric&include=events%2Cdays%2Chours%2Calerts%2Ccurrent&key=LTVNU2E8PX2AMD5VP96NBP8AQ&contentType=json`)
+    .then((res) => {
+      if (!res.ok) {
+        throw Error("could not fetch data for that resource");
+      }
+      return res.json();
+    })
+
+    .then((data) => {
+      setWeather(data.stations);
+      console.log(weather);
+      setIsPending(false);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      setError(err.message);
+    });
+  },[bycountry])
 
   return (
     <>
