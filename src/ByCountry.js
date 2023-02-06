@@ -25,7 +25,7 @@ function ByCountry({ page, nextPage, prevPage}) {
 
   useEffect(() => {
     fetch(
-      `https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=${page}&pageSize=10&apiKey=e316f0b03f6943de87c96dca9afde82a`
+      `https://arkakapi.onrender.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=${page}&pageSize=10&apiKey=e316f0b03f6943de87c96dca9afde82a`
     )
     // fetch(`http://api.openweathermap.org/data/2.5/forecast?q=London,uk&id=524901&appid=b0688766483910f75f1976a78685963d`)
       .then((res) => {
