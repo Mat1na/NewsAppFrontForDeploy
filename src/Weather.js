@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Col, Dropdown, Row, Form } from "react-bootstrap";
-import Countries from "./data/countries.json";
+import React from "react";
+
 
 function Weather({weather}) {
 

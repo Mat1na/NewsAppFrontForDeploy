@@ -17,7 +17,7 @@ function ByCountry({ page, nextPage, prevPage}) {
 
   //('https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?country=us&category=business&apiKey=e316f0b03f6943de87c96dca9afde82a')
 
-  ///news//top-headlines?country=${bycountry}&pageSize=5&apiKey=95221ebc50cf4e13b60594d17bb22237&page=${page}
+  ///news//top-headlines?country=${bycountry}&pageSize=5&apiKey=&page=${page}
 
   //'https://arkakapi.herokuapp.com/https://newsapi-delta.vercel.app/api/news?
   //https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=2&pageSize=3&apiKey=e316f0b03f6943de87c96dca9afde82a
@@ -25,7 +25,7 @@ function ByCountry({ page, nextPage, prevPage}) {
 
   useEffect(() => {
     fetch(
-      `https://arkakapi.onrender.com/https://newsapi-delta.vercel.app/api/news?country=${bycountry}&category=${category}&page=${page}&pageSize=10&apiKey=e316f0b03f6943de87c96dca9afde82a`
+      `https://arkakapi.onrender.com/https://newsapi.org/v2/everything?country=${bycountry}&category=${category}&page=${page}&pageSize=10&apiKey=95221ebc50cf4e13b60594d17bb22237`
     )
     // fetch(`http://api.openweathermap.org/data/2.5/forecast?q=London,uk&id=524901&appid=b0688766483910f75f1976a78685963d`)
       .then((res) => {
